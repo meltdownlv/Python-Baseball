@@ -16,7 +16,7 @@ events = events.set_index(['year', 'game_id', 'team', 'event_type'])
 events = events.unstack().fillna(0).reset_index()
 events.columns = events.columns.droplevel()
 events.columns = ['year', 'game_id', 'team', 'BB', 'E', 'H', 'HBP', 'HR', 'ROE', 'SO']
-events = events.rename_axis(None)
+events = events.rename_axis(None, axis='columns')
 
 # Step 6.9 merge plate appearances
 events_plus_pa = pd.merge(events, pa, how="outer",
